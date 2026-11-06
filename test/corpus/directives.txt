@@ -1,0 +1,258 @@
+==================
+set
+==================
+
+#set($x = 1)
+#set($map.key = "value")
+#set($list = [1, 2, 3])
+
+---
+
+(source_file
+  (directive
+    (set_directive
+      (reference
+        (identifier))
+      (number)))
+  (directive
+    (set_directive
+      (reference
+        (identifier)
+        (identifier))
+      (string
+        (double_quoted_string_content))))
+  (directive
+    (set_directive
+      (reference
+        (identifier))
+      (list_literal
+        (argument_list
+          (number)
+          (number)
+          (number)))))
+  (text))
+
+==================
+if elseif else
+==================
+
+#if($a == 1)
+one
+#elseif($a > 1)
+many
+#else
+none
+#end
+
+---
+
+(source_file
+  (directive
+    (if_directive
+      (binary_expression
+        (reference
+          (identifier))
+        (number))
+      (text)
+      (elseif_clause
+        (binary_expression
+          (reference
+            (identifier))
+          (number))
+        (text))
+      (else_clause
+        (text))))
+  (text))
+
+==================
+nested directives
+==================
+
+#if($a)
+  #foreach($i in $list)
+    #if($i.enabled)
+      $i.name
+    #end
+  #end
+#end
+
+---
+
+(source_file
+  (directive
+    (if_directive
+      (reference
+        (identifier))
+      (directive
+        (foreach_directive
+          (reference
+            (identifier))
+          (reference
+            (identifier))
+          (directive
+            (if_directive
+              (reference
+                (identifier)
+                (identifier))
+              (reference
+                (identifier)
+                (identifier))))))))
+  (text))
+
+==================
+foreach with range
+==================
+
+#foreach($i in [1..$count])
+$i
+#end
+
+---
+
+(source_file
+  (directive
+    (foreach_directive
+      (reference
+        (identifier))
+      (range_expression
+        (number)
+        (reference
+          (identifier)))
+      (reference
+        (identifier))))
+  (text))
+
+==================
+macro definition and velocimacro call
+==================
+
+#macro(render $item $index)
+$index: $item
+#end
+
+#@render($items[0], 1)
+  body
+#end
+
+---
+
+(source_file
+  (directive
+    (macro_definition
+      (identifier)
+      (reference
+        (identifier))
+      (reference
+        (identifier))
+      (reference
+        (identifier))
+      (text)
+      (reference
+        (identifier))))
+  (directive
+    (velocimacro_call
+      (identifier)
+      (arguments
+        (argument_list
+          (reference
+            (identifier)
+            (number))
+          (number)))
+      (text)))
+  (text))
+
+==================
+include, parse, evaluate
+==================
+
+#parse("header.vm")
+#include("a.vm", "b.vm")
+#include("a.vm" "b.vm")
+#evaluate($dynamicCode)
+
+---
+
+(source_file
+  (directive
+    (parse_directive
+      (file_argument_list
+        (string
+          (double_quoted_string_content)))))
+  (directive
+    (include_directive
+      (file_argument_list
+        (string
+          (double_quoted_string_content))
+        (string
+          (double_quoted_string_content)))))
+  (directive
+    (include_directive
+      (file_argument_list
+        (string
+          (double_quoted_string_content))
+        (string
+          (double_quoted_string_content)))))
+  (directive
+    (evaluate_directive
+      (reference
+        (identifier))))
+  (text))
+
+==================
+stop and break
+==================
+
+#foreach($i in $list)
+#if($i == 0)#break#end
+#end
+#stop
+
+---
+
+(source_file
+  (directive
+    (foreach_directive
+      (reference
+        (identifier))
+      (reference
+        (identifier))
+      (directive
+        (if_directive
+          (binary_expression
+            (reference
+              (identifier))
+            (number))
+          (directive
+            (break_directive))))))
+  (directive
+    (stop_directive))
+  (text))
+
+==================
+generic user macro
+==================
+
+#myMacro()
+#myMacro($a, "b")
+#myMacro
+
+---
+
+(source_file
+  (directive
+    (generic_directive
+      (directive_name)
+      (arguments)))
+  (directive
+    (generic_directive
+      (directive_name)
+      (arguments
+        (argument_list
+          (reference
+            (identifier))
+          (string
+            (double_quoted_string_content))))))
+  (directive
+    (generic_directive
+      (directive_name)))
+  (text))

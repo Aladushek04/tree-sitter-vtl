@@ -1,0 +1,55 @@
+==================
+line comment
+==================
+
+## a line comment
+$afterComment
+
+---
+
+(source_file
+  (comment)
+  (reference
+    (identifier))
+  (text))
+
+==================
+block comment
+==================
+
+#* a block
+   comment *#
+text
+
+---
+
+(source_file
+  (block_comment)
+  (text))
+
+==================
+documentation comment
+==================
+
+#** @vtlvariable name="x" type="java.lang.String" *#
+$x
+
+---
+
+(source_file
+  (documentation_comment)
+  (reference
+    (identifier))
+  (text))
+
+==================
+unparsed content
+==================
+
+#[[ this $is #not parsed ]]#
+
+---
+
+(source_file
+  (unparsed_content)
+  (text))

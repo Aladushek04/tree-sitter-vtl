@@ -1,0 +1,30 @@
+==================
+plain text
+==================
+
+Hello, world!
+HTML, C# and CSS stay plain text.
+
+---
+
+(source_file
+  (text))
+
+==================
+hash characters that are not directives
+==================
+
+color: #fff; background: #1f1f1f;
+# 1 and #! and #( and ##comment
+C# is a language
+
+---
+
+(source_file
+  (text)
+  (directive
+    (generic_directive
+      (directive_name)))
+  (text)
+  (comment)
+  (text))

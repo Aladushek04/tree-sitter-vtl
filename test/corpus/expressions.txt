@@ -1,0 +1,113 @@
+==================
+arithmetic and comparison operators
+==================
+
+#set($a = 1 + 2 * 3 - 4 / 2 % 3)
+#set($b = ($x + 2) * -3)
+#if($a == 1 && $b != 2 || !$c)
+ok
+#end
+
+---
+
+(source_file
+  (directive
+    (set_directive
+      (reference
+        (identifier))
+      (binary_expression
+        (binary_expression
+          (number)
+          (binary_expression
+            (number)
+            (number)))
+        (binary_expression
+          (binary_expression
+            (number)
+            (number))
+          (number)))))
+  (directive
+    (set_directive
+      (reference
+        (identifier))
+      (binary_expression
+        (parenthesized_expression
+          (binary_expression
+            (reference
+              (identifier))
+            (number)))
+        (unary_expression
+          (number)))))
+  (directive
+    (if_directive
+      (binary_expression
+        (binary_expression
+          (binary_expression
+            (reference
+              (identifier))
+            (number))
+          (binary_expression
+            (reference
+              (identifier))
+            (number)))
+        (unary_expression
+          (reference
+            (identifier))))
+      (text)))
+  (text))
+
+==================
+word operators
+==================
+
+#if($a gt 1 and $b ge 2 or not $c)
+ok
+#end
+#if($a eq "x" or $b ne "y" or $c lt 1 or $d le 2)
+ok
+#end
+
+---
+
+(source_file
+  (directive
+    (if_directive
+      (binary_expression
+        (binary_expression
+          (binary_expression
+            (reference
+              (identifier))
+            (number))
+          (binary_expression
+            (reference
+              (identifier))
+            (number)))
+        (unary_expression
+          (reference
+            (identifier))))
+      (text)))
+  (directive
+    (if_directive
+      (binary_expression
+        (binary_expression
+          (binary_expression
+            (binary_expression
+              (reference
+                (identifier))
+              (string
+                (double_quoted_string_content)))
+            (binary_expression
+              (reference
+                (identifier))
+              (string
+                (double_quoted_string_content))))
+          (binary_expression
+            (reference
+              (identifier))
+            (number)))
+        (binary_expression
+          (reference
+            (identifier))
+          (number)))
+      (text)))
+  (text))

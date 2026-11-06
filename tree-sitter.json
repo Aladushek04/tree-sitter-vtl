@@ -1,0 +1,29 @@
+{
+  "grammars": [
+    {
+      "name": "vtl",
+      "camelcase": "Vtl",
+      "scope": "source.vtl",
+      "path": ".",
+      "file-types": [
+        "vtl",
+        "vm",
+        "velocity"
+      ],
+      "injection-regex": "^(vtl|velocity)$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Velocity Template Language (VTL) grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Velocity Template Language Extension contributors"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/velocity-template-language/zed-velocity"
+    }
+  }
+}

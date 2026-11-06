@@ -1,0 +1,84 @@
+==================
+simple references
+==================
+
+$name $!quiet ${formal} $!{quietFormal}
+
+---
+
+(source_file
+  (reference
+    (identifier))
+  (reference
+    (identifier))
+  (reference
+    (identifier))
+  (reference
+    (identifier))
+  (text))
+
+==================
+property, method and index access
+==================
+
+$user $user.name $user.getName() $list[0] $list[$i].size() $a.b.c(1).d
+
+---
+
+(source_file
+  (reference
+    (identifier))
+  (reference
+    (identifier)
+    (identifier))
+  (reference
+    (identifier)
+    (identifier)
+    (arguments))
+  (reference
+    (identifier)
+    (number))
+  (reference
+    (identifier)
+    (reference
+      (identifier))
+    (identifier)
+    (arguments))
+  (reference
+    (identifier)
+    (identifier)
+    (identifier)
+    (arguments
+      (argument_list
+        (number)))
+    (identifier))
+  (text))
+
+==================
+reference inside markup
+==================
+
+<li class="$item">$!{item.label}</li>
+
+---
+
+(source_file
+  (text)
+  (reference
+    (identifier))
+  (text)
+  (reference
+    (identifier)
+    (identifier))
+  (text))
+
+==================
+dollar signs that are not references
+==================
+
+price $5, $ alone, $(document).ready(), ${ not ref
+
+---
+
+(source_file
+  (text))

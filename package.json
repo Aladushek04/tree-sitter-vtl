@@ -1,0 +1,21 @@
+{
+  "name": "tree-sitter-vtl",
+  "version": "0.1.0",
+  "description": "Velocity Template Language (VTL) grammar for tree-sitter",
+  "license": "MIT",
+  "keywords": [
+    "tree-sitter",
+    "parser",
+    "velocity",
+    "vtl",
+    "template"
+  ],
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.24.7"
+  }
+}
