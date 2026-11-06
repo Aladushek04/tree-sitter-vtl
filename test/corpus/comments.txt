@@ -53,3 +53,28 @@ unparsed content
 (source_file
   (unparsed_content)
   (text))
+
+==================
+comment inside a directive
+==================
+
+#set($x = 1 ## trailing
+  + 2) ## after
+#end
+
+---
+
+(source_file
+  (directive
+    (set_directive
+      (reference
+        (identifier))
+      (binary_expression
+        (number)
+        (comment)
+        (number))))
+  (comment)
+  (directive
+    (generic_directive
+      (directive_name)))
+  (text))

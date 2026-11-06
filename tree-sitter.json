@@ -16,14 +16,6 @@
   "metadata": {
     "version": "0.1.0",
     "license": "MIT",
-    "description": "Velocity Template Language (VTL) grammar for tree-sitter",
-    "authors": [
-      {
-        "name": "Velocity Template Language Extension contributors"
-      }
-    ],
-    "links": {
-      "repository": "https://github.com/velocity-template-language/zed-velocity"
-    }
+    "description": "Velocity Template Language (VTL) grammar for tree-sitter"
   }
 }

@@ -28,9 +28,15 @@ const word = (text) => token(prec(1, text));
 module.exports = grammar({
   name: 'vtl',
 
-  // Whitespace is insignificant inside directives/expressions, but it is also
-  // part of `text`, which is matched greedily before extras are considered.
-  extras: $ => [/\s/],
+  // Whitespace and comments may appear between any two tokens, including
+  // inside directive arguments. They are still emitted as nodes, so they are
+  // highlighted and matched by queries.
+  extras: $ => [
+    /\s/,
+    $.comment,
+    $.block_comment,
+    $.documentation_comment,
+  ],
 
   word: $ => $.identifier,
 
@@ -38,9 +44,6 @@ module.exports = grammar({
     source_file: $ => repeat($._node),
 
     _node: $ => choice(
-      $.comment,
-      $.documentation_comment,
-      $.block_comment,
       $.unparsed_content,
       $.directive,
       $.reference,
@@ -49,7 +52,7 @@ module.exports = grammar({
     ),
 
     // Plain template text. It stops at `$` and `#` only when they actually
-    // begin a reference/directive, so `C#`, `#id`, `$5` and `#1f1f1f` stay text.
+    // begin a reference/directive, so `C#`, `$5` and `#1f1f1f` stay text.
     // Incomplete references (`${`, `$!`, ...) also fall back to text so that
     // half-typed templates still parse.
     text: _ => token(prec(-2, /([^$#\\]|\$[^{!a-zA-Z_]|\$\{[^a-zA-Z_!]|\$![^{a-zA-Z_]|\$!\{[^a-zA-Z_]|#[^{a-zA-Z_*\[@#{]|\\[^$#\\])+/)),

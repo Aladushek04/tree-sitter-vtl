@@ -278,19 +278,7 @@
       "required": false,
       "types": [
         {
-          "type": "block_comment",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
           "type": "directive",
-          "named": true
-        },
-        {
-          "type": "documentation_comment",
           "named": true
         },
         {
@@ -395,19 +383,7 @@
       "required": false,
       "types": [
         {
-          "type": "block_comment",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
           "type": "directive",
-          "named": true
-        },
-        {
-          "type": "documentation_comment",
           "named": true
         },
         {
@@ -485,19 +461,7 @@
       "required": false,
       "types": [
         {
-          "type": "block_comment",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
           "type": "directive",
-          "named": true
-        },
-        {
-          "type": "documentation_comment",
           "named": true
         },
         {
@@ -687,19 +651,7 @@
       "required": false,
       "types": [
         {
-          "type": "block_comment",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
           "type": "directive",
-          "named": true
-        },
-        {
-          "type": "documentation_comment",
           "named": true
         },
         {
@@ -803,19 +755,7 @@
       "required": false,
       "types": [
         {
-          "type": "block_comment",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
           "type": "directive",
-          "named": true
-        },
-        {
-          "type": "documentation_comment",
           "named": true
         },
         {
@@ -909,19 +849,7 @@
       "required": false,
       "types": [
         {
-          "type": "block_comment",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
           "type": "directive",
-          "named": true
-        },
-        {
-          "type": "documentation_comment",
           "named": true
         },
         {
@@ -1384,19 +1312,7 @@
       "required": false,
       "types": [
         {
-          "type": "block_comment",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
           "type": "directive",
-          "named": true
-        },
-        {
-          "type": "documentation_comment",
           "named": true
         },
         {
@@ -1540,19 +1456,7 @@
           "named": true
         },
         {
-          "type": "block_comment",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
           "type": "directive",
-          "named": true
-        },
-        {
-          "type": "documentation_comment",
           "named": true
         },
         {
